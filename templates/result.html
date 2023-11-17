@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Prediction Result</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #container {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: #3498db;
+        }
+
+        p {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Weather Prediction Result</h1>
+
+        <p>Latitude: {{ latitude }}</p>
+        <p>Longitude: {{ longitude }}</p>
+
+        <p>Temperature: {{ "{:.0f}".format(temperature) }}°C</p>
+        <p>Humidity: {{ humidity }}%</p>
+        <p>Wind Speed: {{ wind_speed }} m/s</p>
+        <p>Pressure: {{ pressure }} hPa</p>
+        <p>Visibility: {{ visibility }} meters</p>
+
+        <p>Prediction: {{ prediction }}</p>
+    </div>
+</body>
+</html>
