@@ -4,6 +4,7 @@ import joblib
 from sklearn.preprocessing import MinMaxScaler
 from dotenv import load_dotenv
 import os 
+from flask import Flask, render_template
 
 load_dotenv()
 
@@ -27,6 +28,8 @@ def result():
     # Get latitude and longitude from the form
     latitude = request.form.get('latitude')
     longitude = request.form.get('longitude')
+    city = request.form.get('city')
+
 
     # Use OpenWeatherMap API to get weather data
     api_key = os.getenv("fk_api_key")
@@ -36,8 +39,11 @@ def result():
         response = requests.get(weather_url)
         response.raise_for_status()  # Raise an HTTPError for bad responses
         weather_data = response.json()
+        
 
         # Extract relevant weather information
+        country = weather_data.get('sys', {}).get('country', 'N/A')
+        api_city = weather_data.get('name', 'N/A')
         temperature = weather_data.get('main', {}).get('temp', 'N/A') - 273.15  # Convert from Kelvin to Celsius
         humidity = weather_data.get('main', {}).get('humidity', 'N/A')
         wind_speed = weather_data.get('wind', {}).get('speed', 'N/A')
@@ -62,7 +68,9 @@ def result():
         # Print the prediction
         print("Prediction:", prediction_label)
 
+
         return render_template('result.html', latitude=latitude, longitude=longitude,
+                               country=country, api_city=api_city,
                                temperature=temperature, humidity=humidity,
                                wind_speed=wind_speed, pressure=pressure,
                                visibility=visibility, prediction=prediction_label)
