@@ -1,0 +1,8 @@
+Flask
+requests
+joblib
+dotenv
+scikit-learn
+streamlit
+datetime
+pandas
