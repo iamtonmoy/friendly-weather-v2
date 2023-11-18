@@ -1,19 +1,23 @@
 {
-    "version": 2,
-    
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/app.py"
-      }
-    ]
-    "installCommand": "pip install -r requirements.txt",
-    
-    "env": {
+  "version": 2,
+  "builds": [
+    {
+      "src": "app.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/app.py"
+    }
+  ],
+  "env": {
     "PYTHON_VERSION": "3.9"
+  },
+  "scripts": {
+    "build": "pip install -r requirements.txt",
+    "dev": "python app.py",
+    "start": "python app.py"
   }
 }
-
-
-
-  
