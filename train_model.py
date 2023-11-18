@@ -2,6 +2,10 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 import joblib
+import openai
+
+openai.api_key = 'YOUR_OPENAI_API_KEY'
+
 
 # load csv
 df = pd.read_csv('dataV1.csv')  
