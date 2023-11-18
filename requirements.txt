@@ -1,5 +1,3 @@
-–upgrade pip
--upgrade setuptools
 wheel
 setuptools 
 pip==21.3.1
