@@ -15,9 +15,31 @@
   "env": {
     "PYTHON_VERSION": "3.9"
   },
-  "scripts": {
-    "build": "pip install -r requirements.txt",
-    "dev": "python app.py",
-    "start": "python app.py"
+  "builds": [
+    {
+      "src": "app.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "25mb"
+      },
+      "build": {
+        "functions": [
+          {
+            "includeFiles": ["*.py"]
+          }
+        ]
+      }
+    }
+  ],
+  "build": {
+    "functions": [
+      {
+        "includeFiles": ["*.py"]
+      }
+    ],
+    "env": {
+      "EXAMPLE_ENV_VAR": "example-value"
+    },
+    "command": "pip install -r requirements.txt && python app.py"
   }
 }
