@@ -16,11 +16,10 @@
     "PYTHON_VERSION": "3.9"
   },
   "build": {
-    "functions": [
-      {
-        "includeFiles": ["*.py"]
-      }
-    ],
-    "command": "pip install -r requirements.txt && python app.py"
+    "command": "pip install -r requirements.txt && python app.py",
+    "functions": { "api/**/*.py": true },
+    "env": {
+      "EXAMPLE_ENV_VAR": "example-value"
+    }
   }
 }
